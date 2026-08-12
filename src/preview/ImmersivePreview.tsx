@@ -21,6 +21,7 @@ import {
 import ShareMenu from '../components/ShareMenu'
 import VisitorCount from '../components/VisitorCount'
 import GitHubStarLink from '../components/GitHubStarLink'
+import CalendarLink from '../components/CalendarLink'
 import { approximateMap } from '../lib/approximateMap'
 import { approximateCoordinates } from '../lib/approximateMap'
 import {
@@ -444,6 +445,7 @@ function LiveResult({ selection, live, now, simulating, playing, setPlaying, set
             <div><dt>Maximum</dt><dd>{formatShortTime(result.peak, result.timeZone)}</dd></div>
             <div><dt>Ends</dt><dd>{formatShortTime(result.ends, result.timeZone)}</dd></div>
           </dl>
+          <CalendarLink result={result} place={place} />
           <div className="immersive-safety"><ShieldCheck size={19} /><p><strong>Keep certified eclipse glasses on.</strong> Ordinary sunglasses are not safe at any point during a partial eclipse.</p></div>
         </div>
       </section>

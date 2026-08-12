@@ -14,6 +14,7 @@ The interface is event-led: if there is no visible solar eclipse during the next
 - durable `/at/latitude,longitude/place` result routes;
 - partial, annular and total eclipse classification;
 - local contact times and live eclipse progression;
+- a private, locally generated calendar reminder for each result;
 - an intentionally imprecise regional map with a relative eclipse-coverage layer;
 - a draggable, zoomable globe with a detailed worldwide coverage surface;
 - automatic light and dark colour schemes;
@@ -83,6 +84,8 @@ npm run build
 ```
 
 The accuracy command runs the production astronomy code against 52 published city-centre examples for the 12 August 2026 eclipse. Its 284 assertions cover eclipse type, coverage and local contact times using published data from NASA, the Association Française d’Astronomie and timeanddate.com.
+
+The `Eclipse maintenance` GitHub Actions workflow runs weekly and on demand. It checks that the precomputed manifest still contains the next eight eclipses, repeats the published-data accuracy suite, and verifies the application. A failed run opens one maintenance issue rather than creating repeated alerts.
 
 Ordinary observations are accepted within 1.5 percentage points of published coverage and two minutes of published contact times. Sunset-boundary observations are reported separately with wider limits because refraction, elevation and the local horizon materially affect what is visible. The script always prints raw mean and maximum errors.
 

@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, LocateFixed, Search, ShieldCheck } from 'lucide-
 import ShareMenu from './components/ShareMenu'
 import VisitorCount from './components/VisitorCount'
 import GitHubStarLink from './components/GitHubStarLink'
+import CalendarLink from './components/CalendarLink'
 import {
   eclipseDescription,
   eclipseName,
@@ -335,6 +336,8 @@ function ResultView({ result, place, now, reset, resultsRef }: ResultProps) {
               <div><dt>{result.kind === 'total' ? 'Totality' : 'Ring phase'}</dt><dd>{formatCentralDuration(result.centralPhaseSeconds)}</dd></div>
             )}
           </dl>
+
+          <CalendarLink result={result} place={place} />
 
           <aside className="safety-note">
             <ShieldCheck size={20} aria-hidden="true" />

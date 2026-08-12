@@ -367,6 +367,24 @@ h1 em {
 .facts dd { margin: 0; font-family: 'Newsreader Variable', serif; font-size: 19px; font-weight: 520; white-space: nowrap; }
 .facts .fact-wide dt { margin: 0; }
 
+.calendar-link {
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color .18s ease, background-color .18s ease;
+}
+.calendar-link:hover { border-color: var(--muted); background: var(--surface); }
+.calendar-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
 .safety-note { display: flex; gap: 13px; margin-top: 23px; color: var(--safety); }
 .safety-note svg { flex: none; margin-top: 1px; }
 .safety-note p { margin: 0; font-size: 12px; line-height: 1.5; }

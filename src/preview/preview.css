@@ -680,6 +680,14 @@
 .local-contacts dl > div { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--preview-line); }
 .local-contacts dt { color: var(--preview-muted); font-size: 11px; }
 .local-contacts dd { margin: 0; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.local-contacts .calendar-link {
+  width: 100%;
+  margin-top: 16px;
+  justify-content: center;
+  border-color: var(--preview-line);
+  color: var(--preview-ink);
+}
+.local-contacts .calendar-link:hover { border-color: var(--preview-muted); background: var(--preview-panel); }
 .immersive-safety { margin-top: 24px; padding: 17px; display: flex; align-items: flex-start; gap: 11px; background: rgba(243, 202, 104, .16); color: var(--preview-ink); }
 .immersive-safety svg { flex: 0 0 auto; }
 .immersive-safety p { margin: 0; font-size: 11px; line-height: 1.5; }
