@@ -51,11 +51,11 @@ export function calendarFilename(place: string, result: EclipseResult): string {
 export function buildCalendar(result: EclipseResult, place: string, createdAt = new Date()): string {
   const coverage = Math.round(result.coverage * 100)
   const contactLines = [
-    `Begins: ${formatTime(result.begins, result.timeZone)}`,
-    result.totalBegins ? `${result.kind === 'total' ? 'Totality' : 'Ring phase'} begins: ${formatTime(result.totalBegins, result.timeZone)}` : null,
-    `Maximum: ${formatTime(result.peak, result.timeZone)} (${coverage}% coverage)`,
-    result.totalEnds ? `${result.kind === 'total' ? 'Totality' : 'Ring phase'} ends: ${formatTime(result.totalEnds, result.timeZone)}` : null,
-    `Ends: ${formatTime(result.ends, result.timeZone)}`,
+    `Begins: ${formatTime(result.begins, result.timeZone, 'en-GB')}`,
+    result.totalBegins ? `${result.kind === 'total' ? 'Totality' : 'Ring phase'} begins: ${formatTime(result.totalBegins, result.timeZone, 'en-GB')}` : null,
+    `Maximum: ${formatTime(result.peak, result.timeZone, 'en-GB')} (${coverage}% coverage)`,
+    result.totalEnds ? `${result.kind === 'total' ? 'Totality' : 'Ring phase'} ends: ${formatTime(result.totalEnds, result.timeZone, 'en-GB')}` : null,
+    `Ends: ${formatTime(result.ends, result.timeZone, 'en-GB')}`,
     '',
     'Protect your eyes with certified eclipse glasses. Ordinary sunglasses are not safe.',
     'Calculated locally by Meclipse.',
