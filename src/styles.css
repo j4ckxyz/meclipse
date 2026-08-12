@@ -465,6 +465,7 @@ footer a { color: inherit; }
 .footer-primary { display: flex; align-items: center; gap: 18px; }
 .footer-primary p { margin: 0; }
 .visitor-count { display: inline-flex; align-items: center; gap: 7px; color: var(--muted-strong); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.time-zone-note { margin: -10px 0 20px; color: var(--muted-strong); font-size: 0.78rem; }
 .visitor-pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 13%, transparent); }
 
 @media (prefers-color-scheme: dark) {

@@ -19,6 +19,7 @@ import {
   formatDuration,
   formatShortTime,
   formatTime,
+  formatTimeZone,
 } from './lib/format'
 import { searchPlaces, type Place } from './lib/geocoding'
 import { parseLocationInput } from './lib/locationInput'
@@ -339,6 +340,7 @@ function ResultView({ result, place, coordinates, now, reset, resultsRef }: Resu
               <div><dt>{result.kind === 'total' ? 'Totality' : 'Ring phase'}</dt><dd>{formatCentralDuration(result.centralPhaseSeconds)}</dd></div>
             )}
           </dl>
+          <p className="time-zone-note">Times shown in {formatTimeZone(result.peak, result.timeZone)}</p>
 
           <CalendarLink result={result} place={place} />
 

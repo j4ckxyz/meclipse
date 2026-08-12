@@ -1,17 +1,22 @@
-export const formatDate = (date: Date, timeZone?: string) =>
-  new Intl.DateTimeFormat('en-GB', {
+export const formatDate = (date: Date, timeZone?: string, locale?: string | string[]) =>
+  new Intl.DateTimeFormat(locale, {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone,
   }).format(date)
 
-export const formatTime = (date: Date, timeZone?: string) =>
-  new Intl.DateTimeFormat('en-GB', {
-    hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short', timeZone,
+export const formatTime = (date: Date, timeZone?: string, locale?: string | string[]) =>
+  new Intl.DateTimeFormat(locale, {
+    hour: '2-digit', minute: '2-digit', timeZoneName: 'short', timeZone,
   }).format(date)
 
-export const formatShortTime = (date: Date, timeZone?: string) =>
-  new Intl.DateTimeFormat('en-GB', {
-    hour: '2-digit', minute: '2-digit', hour12: false, timeZone,
+export const formatShortTime = (date: Date, timeZone?: string, locale?: string | string[]) =>
+  new Intl.DateTimeFormat(locale, {
+    hour: '2-digit', minute: '2-digit', timeZone,
   }).format(date)
+
+export const formatTimeZone = (date: Date, timeZone: string, locale?: string | string[]) => {
+  const formatter = new Intl.DateTimeFormat(locale, { timeZone, timeZoneName: 'long' })
+  return formatter.formatToParts(date).find(({ type }) => type === 'timeZoneName')?.value ?? timeZone
+}
 
 export function formatDuration(minutes: number): string {
   const hours = Math.floor(minutes / 60)
