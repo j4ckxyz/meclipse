@@ -40,7 +40,10 @@ body {
 }
 
 button, input { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 button { color: inherit; }
 
 button:focus-visible, input:focus-visible, a:focus-visible {
@@ -267,6 +270,7 @@ h1 em {
 .result-view { width: 100%; padding: 34px 0 72px; outline: none; }
 .result-actions { display: flex; align-items: center; justify-content: space-between; }
 .back-action, .text-action {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 8px;

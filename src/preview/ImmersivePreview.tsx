@@ -169,7 +169,7 @@ function ImmersivePreview() {
   function useMyLocation() {
     if (!navigator.geolocation) {
       setLocationError(geolocationFailure())
-      requestAnimationFrame(() => searchInput.current?.focus())
+      searchInput.current?.focus()
       return
     }
     setLocating(true)
@@ -182,7 +182,7 @@ function ImmersivePreview() {
       (error) => {
         setLocating(false)
         setLocationError(geolocationFailure(error.code))
-        requestAnimationFrame(() => searchInput.current?.focus())
+        searchInput.current?.focus()
       },
       { enableHighAccuracy: false, timeout: 8_000, maximumAge: 600_000 },
     )
