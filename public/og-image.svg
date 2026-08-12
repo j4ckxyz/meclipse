@@ -20,11 +20,10 @@
     <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
       <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#1a2b31" flood-opacity="0.2"/>
     </filter>
-    <clipPath id="disc"><circle cx="965" cy="315" r="210"/></clipPath>
+    <clipPath id="disc"><circle cx="1004" cy="315" r="194"/></clipPath>
   </defs>
 
   <rect width="1200" height="630" fill="url(#paper)"/>
-  <path d="M0 82.5H1200M0 547.5H1200" stroke="#cdd4d1"/>
 
   <g transform="translate(70 46)">
     <circle cx="12" cy="12" r="10.5" fill="none" stroke="#829095"/>
@@ -35,17 +34,17 @@
 
   <text x="70" y="177" fill="#607076" font-family="Arial, sans-serif" font-weight="700" font-size="14" letter-spacing="2.8">SOLAR ECLIPSE CHECKER</text>
   <text x="64" y="275" fill="#172026" font-family="Georgia, serif" font-size="78" letter-spacing="-4">Can you see it</text>
-  <text x="64" y="354" fill="#557b91" font-family="Georgia, serif" font-style="italic" font-size="78" letter-spacing="-4">from where you are?</text>
+  <text x="64" y="350" fill="#557b91" font-family="Georgia, serif" font-style="italic" font-size="70" letter-spacing="-3.5">from where you are?</text>
   <text x="70" y="428" fill="#526066" font-family="Arial, sans-serif" font-size="22">A clear local answer, including coverage and timings.</text>
 
   <g filter="url(#shadow)" clip-path="url(#disc)">
-    <circle cx="965" cy="315" r="210" fill="url(#sun)"/>
-    <circle cx="937" cy="315" r="210" fill="url(#moon)"/>
-    <circle cx="965" cy="315" r="199" fill="none" stroke="#fff7d3" stroke-opacity="0.5"/>
+    <circle cx="1004" cy="315" r="194" fill="url(#sun)"/>
+    <circle cx="978" cy="315" r="194" fill="url(#moon)"/>
+    <circle cx="1004" cy="315" r="184" fill="none" stroke="#fff7d3" stroke-opacity="0.5"/>
   </g>
-  <circle cx="965" cy="315" r="210" fill="none" stroke="#172026" stroke-opacity="0.1"/>
+  <circle cx="1004" cy="315" r="194" fill="none" stroke="#172026" stroke-opacity="0.1"/>
 
-  <g transform="translate(1090 506)">
+  <g transform="translate(1092 498)">
     <circle cx="0" cy="0" r="56" fill="#fbfcfa"/>
     <text x="0" y="-1" text-anchor="middle" fill="#172026" font-family="Georgia, serif" font-size="34">here</text>
     <text x="0" y="20" text-anchor="middle" fill="#687579" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.5">CHECK NOW</text>
