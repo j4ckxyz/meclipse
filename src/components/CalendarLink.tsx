@@ -1,6 +1,6 @@
 import { CalendarPlus } from 'lucide-react'
 import { useMemo } from 'react'
-import { calendarDataUrl, calendarFilename } from '../lib/calendar'
+import { calendarFilename, calendarUrl } from '../lib/calendar'
 import type { EclipseResult } from '../lib/eclipse'
 
 type CalendarLinkProps = {
@@ -11,7 +11,7 @@ type CalendarLinkProps = {
 
 function CalendarLink({ result, place, className = '' }: CalendarLinkProps) {
   const calendar = useMemo(() => ({
-    href: calendarDataUrl(result, place),
+    href: calendarUrl(result, place),
     filename: calendarFilename(place, result),
   }), [place, result])
 

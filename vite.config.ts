@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { loadEnv } from 'vite'
+import { calendarResponse } from './src/server/calendar.ts'
 import { placesResponse } from './src/server/places.ts'
 import { visitorsResponse, type VisitorStore } from './src/server/visitors.ts'
 
@@ -29,6 +30,20 @@ export default defineConfig(({ mode }) => {
         name: 'meclipse-production-url',
         transformIndexHtml(html) {
           return html.replaceAll('__SITE_URL__', siteUrl.replace(/\/$/, ''))
+        },
+      },
+      {
+        name: 'meclipse-local-calendar-api',
+        configureServer(server) {
+          server.middlewares.use('/api/calendar', async (request, response) => {
+            const apiResponse = calendarResponse(new Request(
+              `http://localhost/api/calendar${request.url || ''}`,
+              { method: request.method },
+            ))
+            response.statusCode = apiResponse.status
+            apiResponse.headers.forEach((value, key) => response.setHeader(key, value))
+            response.end(await apiResponse.text())
+          })
         },
       },
       {

@@ -1,6 +1,6 @@
 import { EclipseKind } from 'astronomy-engine'
 import { describe, expect, it } from 'vitest'
-import { buildCalendar, calendarDataUrl, calendarFilename } from './calendar'
+import { buildCalendar, calendarFilename, calendarUrl } from './calendar'
 import type { EclipseResult } from './eclipse'
 
 const result: EclipseResult = {
@@ -32,11 +32,13 @@ describe('local calendar download', () => {
     expect(calendar.endsWith('\r\n')).toBe(true)
   })
 
-  it('creates an importable data URL and safe British-facing filename', () => {
-    const url = calendarDataUrl(result, 'León, Spain')
+  it('creates a same-origin calendar URL and safe British-facing filename', () => {
+    const url = calendarUrl(result, 'León, Spain')
+    const calendarRequest = new URL(url, 'https://meclipse.test')
 
-    expect(url).toMatch(/^data:text\/calendar;charset=utf-8,/)
-    expect(decodeURIComponent(url)).toContain('BEGIN:VCALENDAR')
+    expect(calendarRequest.pathname).toBe('/api/calendar')
+    expect(calendarRequest.searchParams.get('calendar')).toContain('BEGIN:VCALENDAR')
+    expect(calendarRequest.searchParams.get('filename')).toBe('meclipse-2026-08-12-leon-spain.ics')
     expect(calendarFilename('León, Spain', result)).toBe('meclipse-2026-08-12-leon-spain.ics')
   })
 })

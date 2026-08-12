@@ -60,7 +60,9 @@ describe('immersive local prototype', () => {
     expect(map).toHaveTextContent('Map unavailable · the location result still works')
     expect(window.location.pathname).toBe('/preview/area/48.9,2.4/paris-france')
     expect(map.closest('.immersive-preview')).toHaveClass('maximum-preview')
-    expect(screen.getByRole('link', { name: 'Add to calendar' })).toHaveAttribute('download', expect.stringMatching(/\.ics$/))
+    const calendarLink = screen.getByRole('link', { name: 'Add to calendar' })
+    expect(calendarLink).toHaveAttribute('href', expect.stringMatching(/^\/api\/calendar\?/))
+    expect(calendarLink).toHaveAttribute('download', expect.stringMatching(/\.ics$/))
   })
 
   it('animates first contact when the local simulation crosses the start', () => {

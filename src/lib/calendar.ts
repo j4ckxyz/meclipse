@@ -88,6 +88,10 @@ export function buildCalendar(result: EclipseResult, place: string, createdAt = 
   return `${lines.map(foldLine).join('\r\n')}\r\n`
 }
 
-export function calendarDataUrl(result: EclipseResult, place: string): string {
-  return `data:text/calendar;charset=utf-8,${encodeURIComponent(buildCalendar(result, place))}`
+export function calendarUrl(result: EclipseResult, place: string): string {
+  const params = new URLSearchParams({
+    calendar: buildCalendar(result, place),
+    filename: calendarFilename(place, result),
+  })
+  return `/api/calendar?${params.toString()}`
 }
