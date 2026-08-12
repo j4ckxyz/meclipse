@@ -1,6 +1,3 @@
-import {
-  EclipseKind,
-} from 'astronomy-engine'
 import type { Coordinates, EclipseResult } from './eclipse'
 import { solarDiscGeometry } from './solarGeometry.ts'
 
@@ -12,6 +9,15 @@ export type LiveEclipseState = {
   offsetPercent: number
   progress: number
   stage: 'before' | 'partial' | 'central' | 'after'
+}
+
+export type CountdownPhase = 'begins' | 'maximum' | 'ends' | 'complete'
+
+export type EclipseCountdown = {
+  phase: CountdownPhase
+  label: string
+  at: Date | null
+  milliseconds: number
 }
 
 function clamp(value: number, minimum = 0, maximum = 1): number {
@@ -58,11 +64,32 @@ export function calculateLiveEclipse(
 export function nextLiveMilestone(result: EclipseResult, now: Date): { label: string; at: Date } | null {
   const time = now.getTime()
   if (time < result.begins.getTime()) return { label: 'Begins', at: result.begins }
-  if (result.totalBegins && time < result.totalBegins.getTime()) return { label: result.kind === EclipseKind.Total ? 'Totality' : 'Ring phase', at: result.totalBegins }
   if (time < result.peak.getTime()) return { label: 'Maximum', at: result.peak }
-  if (result.totalEnds && time < result.totalEnds.getTime()) return { label: result.kind === EclipseKind.Total ? 'Totality ends' : 'Ring phase ends', at: result.totalEnds }
   if (time < result.ends.getTime()) return { label: 'Ends', at: result.ends }
   return null
+}
+
+export function eclipseCountdown(result: EclipseResult, now: Date): EclipseCountdown {
+  const milestone = nextLiveMilestone(result, now)
+  if (!milestone) return { phase: 'complete', label: 'Eclipse complete', at: null, milliseconds: 0 }
+
+  const phase = milestone.label === 'Begins' ? 'begins' : milestone.label === 'Maximum' ? 'maximum' : 'ends'
+  return {
+    phase,
+    label: phase === 'begins' ? 'Eclipse begins in' : phase === 'maximum' ? 'Maximum eclipse in' : 'Eclipse ends in',
+    at: milestone.at,
+    milliseconds: milestone.at.getTime() - now.getTime(),
+  }
+}
+
+export function countdownParts(milliseconds: number): { days: string; hours: string; minutes: string; seconds: string } {
+  const total = Math.max(0, Math.ceil(milliseconds / 1000))
+  return {
+    days: String(Math.floor(total / 86_400)).padStart(2, '0'),
+    hours: String(Math.floor((total % 86_400) / 3_600)).padStart(2, '0'),
+    minutes: String(Math.floor((total % 3_600) / 60)).padStart(2, '0'),
+    seconds: String(total % 60).padStart(2, '0'),
+  }
 }
 
 export function formatCountdown(milliseconds: number): string {

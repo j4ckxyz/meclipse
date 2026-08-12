@@ -291,6 +291,16 @@ h1 em {
 }
 
 .eclipse-stage { position: relative; padding: 52px 0 45px; }
+.phase-effect { position: absolute; inset: 8% -8%; pointer-events: none; }
+.phase-effect i { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, var(--sun) 45%, transparent); border-radius: 50%; opacity: 0; }
+.countdown-begins .phase-effect i { animation: waiting-orbit 8s linear infinite; opacity: .45; }
+.countdown-begins .phase-effect i:nth-child(2) { inset: 9%; animation-duration: 5.5s; animation-direction: reverse; }
+.countdown-begins .phase-effect i:nth-child(3) { inset: 18%; animation-duration: 3.5s; }
+.countdown-maximum .phase-effect i { inset: -3%; border-width: 2px; animation: peak-pulse 2.2s ease-out infinite; }
+.countdown-maximum .phase-effect i:nth-child(2) { animation-delay: .7s; }
+.countdown-maximum .phase-effect i:nth-child(3) { animation-delay: 1.4s; }
+.countdown-ends .phase-effect { background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--sun) 55%, transparent) 0 1deg, transparent 1deg 14deg); border-radius: 50%; animation: corona-turn 18s linear infinite; opacity: .5; }
+.countdown-ends .phase-effect i { inset: 12%; box-shadow: 0 0 65px color-mix(in srgb, var(--sun) 42%, transparent); animation: farewell-glow 2.8s ease-in-out infinite; }
 .stage-label {
   position: absolute;
   top: 0;
@@ -327,13 +337,12 @@ h1 em {
   border: 1px solid rgba(255,247,211,.45);
 }
 .moon-disc {
-  top: 0;
+  top: 50%;
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at 66% 35%, #344a57, var(--moon) 67%);
   box-shadow: inset -18px -12px 35px rgba(0,0,0,.16);
 }
-.eclipse-disc.annular .moon-disc { top: 8%; left: 8% !important; width: 84%; height: 84%; }
 
 .coverage-readout {
   position: absolute;
@@ -352,6 +361,29 @@ h1 em {
 }
 .coverage-readout strong { font-family: 'Newsreader Variable', serif; font-size: 35px; font-weight: 520; letter-spacing: -.04em; }
 .coverage-readout span { font-size: 10px; line-height: 1.25; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+.live-countdown { position: relative; overflow: hidden; margin: 28px 0 30px; padding: 22px 25px 18px; border: 1px solid var(--line); background: var(--panel); box-shadow: 0 18px 55px var(--shadow); }
+.live-countdown::after { content: ''; position: absolute; inset: auto 0 0; height: 3px; background: var(--warning); transform-origin: left; animation: countdown-scan 3s ease-in-out infinite; }
+.countdown-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .12em; font-size: 10px; }
+.countdown-heading span { padding: 5px 8px; border-radius: 999px; color: white; background: var(--warning); font-weight: 800; }
+.countdown-heading strong { font-weight: 750; }
+.countdown-digits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-variant-numeric: tabular-nums; }
+.countdown-digits span { display: flex; flex-direction: column; min-width: 0; }
+.countdown-digits b { font-family: 'Newsreader Variable', serif; font-size: clamp(38px, 4.3vw, 61px); font-weight: 480; line-height: .9; letter-spacing: -.04em; }
+.countdown-digits small { margin-top: 7px; color: var(--muted); font-size: 8px; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+.live-countdown > p { margin: 15px 0 0; color: var(--muted-strong); font-size: 10px; }
+.live-countdown-maximum { border-color: color-mix(in srgb, var(--warning) 42%, var(--line)); animation: maximum-arrival .8s ease-out both; }
+.live-countdown-ends::after { background: var(--blue); animation: countdown-scan 5s ease-in-out infinite reverse; }
+.live-countdown-complete { box-shadow: none; }
+.live-countdown-complete::after { animation: none; background: var(--muted); }
+.countdown-finished { font-family: 'Newsreader Variable', serif; font-size: 25px !important; color: var(--ink) !important; }
+
+@keyframes waiting-orbit { to { transform: rotate(360deg) scale(1.04); } }
+@keyframes peak-pulse { 0% { transform: scale(.72); opacity: .7; } 100% { transform: scale(1.28); opacity: 0; } }
+@keyframes corona-turn { to { transform: rotate(360deg); } }
+@keyframes farewell-glow { 50% { opacity: .75; transform: scale(1.08); } }
+@keyframes countdown-scan { 0%, 100% { transform: scaleX(.08); } 50% { transform: scaleX(1); } }
+@keyframes maximum-arrival { from { transform: scale(.96); filter: brightness(1.35); } }
 
 .result-copy h1 { font-size: clamp(50px, 5.8vw, 78px); }
 .location-label { overflow-wrap: anywhere; }
@@ -535,6 +567,9 @@ footer a { color: inherit; }
   .facts div + div { padding-left: 12px; }
   .facts div { padding-right: 10px; }
   .facts dd { font-size: 17px; }
+  .live-countdown { padding-inline: 17px; }
+  .countdown-digits { gap: 7px; }
+  .countdown-digits b { font-size: clamp(34px, 11vw, 48px); }
   .empty-actions { align-items: center; flex-direction: column; gap: 16px; }
   .result-actions { align-items: flex-start; }
   .result-actions .share-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -546,4 +581,5 @@ footer a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  .phase-effect i, .phase-effect, .live-countdown, .live-countdown::after { animation: none !important; }
 }

@@ -491,6 +491,23 @@
   align-items: end;
   border-top: 1px solid var(--preview-line);
 }
+.next-contact { display: block; min-width: min(100%, 560px); padding: 18px 20px 16px; overflow: hidden; animation: contact-arrival .7s ease-out both; }
+.next-contact > span { display: flex; align-items: center; gap: 8px; }
+.next-contact > span i { width: 7px; height: 7px; border-radius: 50%; background: var(--preview-accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--preview-accent) 15%, transparent); animation: contact-beacon 1.4s ease-in-out infinite; }
+.immersive-countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 2vw, 30px); margin-top: 14px; font-variant-numeric: tabular-nums; }
+.immersive-countdown b { display: flex; flex-direction: column; font-family: 'Newsreader Variable', Georgia, serif; font-size: clamp(35px, 4.2vw, 62px); font-weight: 430; line-height: .85; }
+.immersive-countdown small { margin-top: 9px; color: var(--preview-muted); font-family: 'DM Sans Variable', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.next-contact > p { margin: 13px 0 0; color: var(--preview-muted); font-size: 10px; }
+.next-contact-maximum { box-shadow: inset 3px 0 var(--preview-accent); }
+.next-contact-ends { box-shadow: inset 3px 0 var(--preview-blue); }
+.countdown-visual-begins .instrument-rings { animation: contact-orbit 9s linear infinite; }
+.countdown-visual-maximum .instrument-rings { animation: maximum-ripple 2.2s ease-out infinite; }
+.countdown-visual-ends::before { content: ''; position: absolute; inset: 3%; border-radius: 50%; background: repeating-conic-gradient(transparent 0 12deg, color-mix(in srgb, var(--preview-accent) 35%, transparent) 12deg 13deg); animation: corona-farewell 16s linear infinite; }
+@keyframes contact-arrival { from { opacity: 0; transform: translateY(12px); } }
+@keyframes contact-beacon { 50% { transform: scale(.65); opacity: .55; } }
+@keyframes contact-orbit { to { transform: rotate(360deg) scale(1.04); } }
+@keyframes maximum-ripple { 0% { transform: scale(.82); opacity: .9; } 100% { transform: scale(1.14); opacity: .15; } }
+@keyframes corona-farewell { to { transform: rotate(360deg); } }
 
 .next-contact span { color: var(--preview-muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .next-contact strong { grid-row: 1 / span 2; grid-column: 2; font-family: 'Newsreader Variable', Georgia, serif; font-size: 35px; font-weight: 430; font-variant-numeric: tabular-nums; }

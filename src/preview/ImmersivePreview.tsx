@@ -38,8 +38,8 @@ import { parseLocationInput } from '../lib/locationInput'
 import { locationPath, parseLocationPath } from '../lib/routes'
 import {
   calculateLiveEclipse,
-  formatCountdown,
-  nextLiveMilestone,
+  countdownParts,
+  eclipseCountdown,
 } from '../lib/liveEclipse'
 import RegionalMap from './RegionalMap'
 import CoverageGlobe from './CoverageGlobe'
@@ -358,7 +358,8 @@ type LiveResultProps = {
 function LiveResult({ selection, live, now, simulating, playing, setPlaying, setNow, setSimulating, reset }: LiveResultProps) {
   const { result, coordinates, place } = selection
   const map = useMemo(() => approximateMap(coordinates), [coordinates])
-  const milestone = nextLiveMilestone(result, now)
+  const countdown = eclipseCountdown(result, now)
+  const countdownUnits = countdownParts(countdown.milliseconds)
   const percentage = Math.round(1000 * (live.active ? live.coverage : result.coverage)) / 10
   const rangeStart = result.begins.getTime() - 10 * 60_000
   const rangeEnd = result.ends.getTime() + 10 * 60_000
@@ -402,16 +403,18 @@ function LiveResult({ selection, live, now, simulating, playing, setPlaying, set
                 ? 'The eclipse has finished at this location. These contact times remain here for reference.'
                 : eclipseDescription(result.kind, result.coverage)}
           </p>
-          {milestone && (
-            <div className="next-contact">
-              <span>{milestone.label}</span>
-              <strong>{formatCountdown(milestone.at.getTime() - now.getTime())}</strong>
-              <small>{formatShortTime(milestone.at, result.timeZone)}</small>
+          {countdown.at && (
+            <div className={`next-contact next-contact-${countdown.phase}`} key={countdown.phase} aria-live="polite" aria-atomic="true">
+              <span><i /> Live · {countdown.label}</span>
+              <div className="immersive-countdown" aria-label={`${Number(countdownUnits.days)} days, ${Number(countdownUnits.hours)} hours, ${Number(countdownUnits.minutes)} minutes, ${Number(countdownUnits.seconds)} seconds`}>
+                {Object.entries(countdownUnits).map(([unit, value]) => <b key={unit}>{value}<small>{unit}</small></b>)}
+              </div>
+              <p>Target: {countdown.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' })} in this device’s local time</p>
             </div>
           )}
         </div>
 
-        <div className="live-instrument" aria-label={live.active ? `${percentage}% of the Sun is currently covered` : `${Math.round(result.coverage * 100)}% will be covered at maximum`}>
+        <div className={`live-instrument countdown-visual-${countdown.phase}`} aria-label={live.active ? `${percentage}% of the Sun is currently covered` : `${Math.round(result.coverage * 100)}% will be covered at maximum`}>
           <div className="instrument-rings" aria-hidden="true" />
           <div className={`live-eclipse-disc ${result.kind}`} aria-hidden="true">
             <span className="live-sun" />

@@ -24,6 +24,7 @@ import {
 import { searchPlaces, type Place } from './lib/geocoding'
 import { parseLocationInput } from './lib/locationInput'
 import { locationPath, parseLocationPath } from './lib/routes'
+import { calculateLiveEclipse, countdownParts, eclipseCountdown } from './lib/liveEclipse'
 
 type View =
   | { name: 'start' }
@@ -50,7 +51,7 @@ function App() {
   const resultsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 30_000)
+    const timer = window.setInterval(() => setNow(new Date()), 1_000)
     return () => window.clearInterval(timer)
   }, [])
 
@@ -304,7 +305,12 @@ type ResultProps = {
 function ResultView({ result, place, coordinates, now, reset, resultsRef }: ResultProps) {
   const coverage = Math.round(result.coverage * 100)
   const phase = eclipseStatus(result, now)
-  const shadowOffset = `${Math.max(0, (1 - result.coverage) * 82)}%`
+  const live = calculateLiveEclipse(result, coordinates, now)
+  const countdown = eclipseCountdown(result, now)
+  const parts = countdownParts(countdown.milliseconds)
+  const shadowOffset = live.stage === 'before' || live.stage === 'after'
+    ? `${live.offsetPercent}%`
+    : `${50 + live.offsetPercent}%`
   const locationLabel = place.length > 68 ? `${place.slice(0, 65)}…` : place
 
   return (
@@ -314,19 +320,32 @@ function ResultView({ result, place, coordinates, now, reset, resultsRef }: Resu
         <ShareMenu coverage={coverage} />
       </div>
       <div className="result-grid">
-        <div className="eclipse-stage" aria-label={`${coverage}% of the Sun covered`}>
+        <div className={`eclipse-stage countdown-${countdown.phase}`} aria-label={`${coverage}% of the Sun covered at maximum`}>
           <p className="stage-label"><span className="live-dot" />{phase}</p>
+          <div className="phase-effect" aria-hidden="true"><i /><i /><i /></div>
           <div className={`eclipse-disc ${result.kind}`} aria-hidden="true">
             <span className="sun-disc" />
-            <span className="moon-disc" style={{ left: shadowOffset }} />
+            <span className="moon-disc" style={{ left: shadowOffset, transform: 'translate(-50%, -50%)', width: `${live.moonScale * 100}%`, height: `${live.moonScale * 100}%` }} />
           </div>
-          <div className="coverage-readout"><strong>{coverage}%</strong><span>of the Sun<br />covered</span></div>
+          <div className="coverage-readout"><strong>{coverage}%</strong><span>covered at<br />maximum</span></div>
         </div>
 
         <div className="result-copy">
           <p className="eyebrow location-label">{locationLabel}</p>
           <h1 id="result-title">Yes — you’ll see a<br /><em>{eclipseName(result.kind).toLowerCase()}</em>.</h1>
           <p className="result-intro">{eclipseDescription(result.kind, result.coverage)}</p>
+
+          <section className={`live-countdown live-countdown-${countdown.phase}`} key={countdown.phase} aria-live="polite" aria-atomic="true">
+            <div className="countdown-heading"><span>Live</span><strong>{countdown.label}</strong></div>
+            {countdown.at ? (
+              <>
+                <div className="countdown-digits" aria-label={formatCountdownAccessible(parts)}>
+                  {Object.entries(parts).map(([unit, value]) => <span key={unit}><b>{value}</b><small>{unit}</small></span>)}
+                </div>
+                <p>At {countdown.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' })} in this device’s local time</p>
+              </>
+            ) : <p className="countdown-finished">The eclipse has ended at this location.</p>}
+          </section>
 
           <dl className="facts">
             <div className="fact-wide">
@@ -353,6 +372,10 @@ function ResultView({ result, place, coordinates, now, reset, resultsRef }: Resu
       <VisibilityMap coordinates={coordinates} peak={result.peak} />
     </section>
   )
+}
+
+function formatCountdownAccessible(parts: ReturnType<typeof countdownParts>) {
+  return `${Number(parts.days)} days, ${Number(parts.hours)} hours, ${Number(parts.minutes)} minutes, ${Number(parts.seconds)} seconds`
 }
 
 export default App

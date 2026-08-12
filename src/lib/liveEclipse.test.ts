@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { findUpcomingEclipse } from './eclipse'
-import { calculateLiveEclipse, formatCountdown, nextLiveMilestone } from './liveEclipse'
+import { calculateLiveEclipse, countdownParts, eclipseCountdown, formatCountdown, nextLiveMilestone } from './liveEclipse'
 
 const paris = { latitude: 48.8566, longitude: 2.3522 }
 const result = findUpcomingEclipse(paris, new Date('2026-08-12T12:00:00Z'))!
@@ -30,5 +30,17 @@ describe('live eclipse calculation', () => {
     const now = new Date(result.begins.getTime() + 1_000)
     expect(nextLiveMilestone(result, now)?.label).toBe('Maximum')
     expect(formatCountdown(125_000)).toBe('2:05')
+  })
+
+
+  it('counts through start, maximum, end, and completion', () => {
+    expect(eclipseCountdown(result, new Date(result.begins.getTime() - 1_000)).phase).toBe('begins')
+    expect(eclipseCountdown(result, new Date(result.begins.getTime() + 1_000)).phase).toBe('maximum')
+    expect(eclipseCountdown(result, new Date(result.peak.getTime() + 1_000)).phase).toBe('ends')
+    expect(eclipseCountdown(result, result.ends).phase).toBe('complete')
+  })
+
+  it('returns stable, screen-ready countdown units', () => {
+    expect(countdownParts(90_061_000)).toEqual({ days: '01', hours: '01', minutes: '01', seconds: '01' })
   })
 })
