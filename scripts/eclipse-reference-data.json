@@ -1,0 +1,87 @@
+{
+  "event": "2026-08-12 solar eclipse",
+  "checkedAt": "2026-08-12",
+  "comparisonStart": "2026-08-01T00:00:00Z",
+  "sources": {
+    "nasa": {
+      "name": "NASA Science — Total Solar Eclipse on August 12, 2026",
+      "url": "https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/",
+      "coveragePrecisionPercentagePoints": 1,
+      "timePrecisionMinutes": 1
+    },
+    "afa": {
+      "name": "Association Française d’Astronomie — dossier de presse, table p. 4",
+      "url": "https://www.afastronomie.fr/media/default/0001/28/DP_ECLIPSEinfo-web-69f3.pdf",
+      "coveragePrecisionPercentagePoints": 0.1,
+      "timePrecisionMinutes": 1
+    },
+    "timeanddate": {
+      "name": "timeanddate.com — Portland, Maine local circumstances",
+      "url": "https://www.timeanddate.com/eclipse/in/usa/portland-me?iso=20260812",
+      "coveragePrecisionPercentagePoints": 0.01,
+      "timePrecisionMinutes": 1
+    }
+  },
+  "thresholds": {
+    "coveragePercentagePoints": 1.5,
+    "contactTimeSeconds": 120,
+    "horizonCoveragePercentagePoints": 10,
+    "horizonContactTimeSeconds": 300
+  },
+  "locations": [
+    { "name": "Anchorage, USA", "source": "nasa", "latitude": 61.2181, "longitude": -149.9003, "timeZone": "America/Anchorage", "kind": "partial", "coverage": 28, "begins": "07:36", "peak": "08:21", "ends": "09:09" },
+    { "name": "Bangor, USA", "source": "nasa", "latitude": 44.8016, "longitude": -68.7712, "timeZone": "America/New_York", "kind": "partial", "coverage": 24, "begins": "12:54", "peak": "13:53", "ends": "14:49" },
+    { "name": "Boston, USA", "source": "nasa", "latitude": 42.3601, "longitude": -71.0589, "timeZone": "America/New_York", "kind": "partial", "coverage": 16, "begins": "13:01", "peak": "13:55", "ends": "14:46" },
+    { "name": "Detroit, USA", "source": "nasa", "latitude": 42.3314, "longitude": -83.0458, "timeZone": "America/Detroit", "kind": "partial", "coverage": 3, "begins": "13:03", "peak": "13:36", "ends": "14:08" },
+    { "name": "Fairbanks, USA", "source": "nasa", "latitude": 64.8378, "longitude": -147.7164, "timeZone": "America/Anchorage", "kind": "partial", "coverage": 37, "begins": "07:37", "peak": "08:27", "ends": "09:18" },
+    { "name": "Juneau, USA", "source": "nasa", "latitude": 58.3019, "longitude": -134.4197, "timeZone": "America/Juneau", "kind": "partial", "coverage": 17, "begins": "07:41", "peak": "08:24", "ends": "09:08" },
+    { "name": "New York, USA", "source": "nasa", "latitude": 40.7128, "longitude": -74.006, "timeZone": "America/New_York", "kind": "partial", "coverage": 9, "begins": "13:07", "peak": "13:54", "ends": "14:38" },
+    { "name": "Philadelphia, USA", "source": "nasa", "latitude": 39.9526, "longitude": -75.1652, "timeZone": "America/New_York", "kind": "partial", "coverage": 7, "begins": "13:11", "peak": "13:53", "ends": "14:35" },
+    { "name": "Portland, Maine, USA", "source": "timeanddate", "latitude": 43.6591, "longitude": -70.2568, "timeZone": "America/New_York", "kind": "partial", "coverage": 19.45, "begins": "12:57", "peak": "13:53", "ends": "14:47" },
+    { "name": "Washington, D.C., USA", "source": "nasa", "latitude": 38.9072, "longitude": -77.0369, "timeZone": "America/New_York", "kind": "partial", "coverage": 4, "begins": "13:17", "peak": "13:53", "ends": "14:27" },
+    { "name": "Algiers, Algeria", "source": "nasa", "latitude": 36.7538, "longitude": 3.0588, "timeZone": "Africa/Algiers", "kind": "partial", "coverage": 96, "begins": "18:42", "peak": "19:33", "horizonSensitive": true },
+    { "name": "Barcelona, Spain", "source": "nasa", "latitude": 41.3874, "longitude": 2.1686, "timeZone": "Europe/Madrid", "kind": "partial", "coverage": 99, "begins": "19:35", "peak": "20:29" },
+    { "name": "Berlin, Germany", "source": "nasa", "latitude": 52.52, "longitude": 13.405, "timeZone": "Europe/Berlin", "kind": "partial", "coverage": 85, "begins": "19:15", "peak": "20:08" },
+    { "name": "Casablanca, Morocco", "source": "nasa", "latitude": 33.5731, "longitude": -7.5898, "timeZone": "Africa/Casablanca", "kind": "partial", "coverage": 87, "begins": "18:48", "peak": "19:43" },
+    { "name": "Dakar, Senegal", "source": "nasa", "latitude": 14.7167, "longitude": -17.4677, "timeZone": "Africa/Dakar", "kind": "partial", "coverage": 37, "begins": "18:25", "peak": "19:12" },
+    { "name": "Dublin, Ireland", "source": "nasa", "latitude": 53.3498, "longitude": -6.2603, "timeZone": "Europe/Dublin", "kind": "partial", "coverage": 94, "begins": "18:12", "peak": "19:10", "ends": "20:05" },
+    { "name": "Edmonton, Canada", "source": "nasa", "latitude": 53.5461, "longitude": -113.4938, "timeZone": "America/Edmonton", "kind": "partial", "coverage": 6, "begins": "10:02", "peak": "10:38", "ends": "11:15" },
+    { "name": "Halifax, Canada", "source": "nasa", "latitude": 44.6488, "longitude": -63.5752, "timeZone": "America/Halifax", "kind": "partial", "coverage": 31, "begins": "13:58", "peak": "15:00", "ends": "15:58" },
+    { "name": "Kraków, Poland", "source": "nasa", "latitude": 50.0647, "longitude": 19.945, "timeZone": "Europe/Warsaw", "kind": "partial", "coverage": 64, "begins": "19:18", "peak": "19:56", "horizonSensitive": true },
+    { "name": "Lisbon, Portugal", "source": "nasa", "latitude": 38.7223, "longitude": -9.1393, "timeZone": "Europe/Lisbon", "kind": "partial", "coverage": 95, "begins": "18:39", "peak": "19:36", "ends": "20:29" },
+    { "name": "London, UK", "source": "nasa", "latitude": 51.5074, "longitude": -0.1278, "timeZone": "Europe/London", "kind": "partial", "coverage": 91, "begins": "18:17", "peak": "19:13", "ends": "20:06" },
+    { "name": "Madrid, Spain", "source": "nasa", "latitude": 40.4168, "longitude": -3.7038, "timeZone": "Europe/Madrid", "kind": "partial", "coverage": 99, "begins": "19:36", "peak": "20:32" },
+    { "name": "Milan, Italy", "source": "nasa", "latitude": 45.4642, "longitude": 9.19, "timeZone": "Europe/Rome", "kind": "partial", "coverage": 92, "begins": "19:27", "peak": "20:20" },
+    { "name": "Montreal, Canada", "source": "nasa", "latitude": 45.5017, "longitude": -73.5673, "timeZone": "America/Toronto", "kind": "partial", "coverage": 18, "begins": "12:50", "peak": "13:45", "ends": "14:38" },
+    { "name": "Nuuk, Greenland", "source": "nasa", "latitude": 64.1814, "longitude": -51.6941, "timeZone": "America/Nuuk", "kind": "partial", "coverage": 79, "begins": "15:30", "peak": "16:35", "ends": "17:39" },
+    { "name": "Oslo, Norway", "source": "nasa", "latitude": 59.9139, "longitude": 10.7522, "timeZone": "Europe/Oslo", "kind": "partial", "coverage": 83, "begins": "19:02", "peak": "19:57", "ends": "20:49" },
+    { "name": "Paris, France", "source": "nasa", "latitude": 48.8566, "longitude": 2.3522, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 92, "begins": "19:22", "peak": "20:17", "ends": "21:09" },
+    { "name": "St. John’s, Canada", "source": "nasa", "latitude": 47.5615, "longitude": -52.7126, "timeZone": "America/St_Johns", "kind": "partial", "coverage": 53, "begins": "14:28", "peak": "15:35", "ends": "16:37" },
+    { "name": "Saint Petersburg, Russia", "source": "nasa", "latitude": 59.9311, "longitude": 30.3609, "timeZone": "Europe/Moscow", "kind": "partial", "coverage": 79, "begins": "19:59", "peak": "20:51" },
+    { "name": "Stockholm, Sweden", "source": "nasa", "latitude": 59.3293, "longitude": 18.0686, "timeZone": "Europe/Stockholm", "kind": "partial", "coverage": 81, "begins": "19:03", "peak": "19:56" },
+    { "name": "Toronto, Canada", "source": "nasa", "latitude": 43.6532, "longitude": -79.3832, "timeZone": "America/Toronto", "kind": "partial", "coverage": 8, "begins": "12:55", "peak": "13:40", "ends": "14:23" },
+    { "name": "Tunis, Tunisia", "source": "nasa", "latitude": 36.8065, "longitude": 10.1815, "timeZone": "Africa/Tunis", "kind": "partial", "coverage": 50, "begins": "18:41", "peak": "19:11", "horizonSensitive": true },
+    { "name": "Vienna, Austria", "source": "nasa", "latitude": 48.2082, "longitude": 16.3738, "timeZone": "Europe/Vienna", "kind": "partial", "coverage": 85, "begins": "19:22", "peak": "20:10", "horizonSensitive": true },
+    { "name": "Winnipeg, Canada", "source": "nasa", "latitude": 49.8951, "longitude": -97.1384, "timeZone": "America/Winnipeg", "kind": "partial", "coverage": 5, "begins": "11:25", "peak": "12:02", "ends": "12:40" },
+
+    { "name": "León, Spain", "source": "nasa", "latitude": 42.5987, "longitude": -5.5671, "timeZone": "Europe/Madrid", "kind": "total", "begins": "19:32", "totalBegins": "20:28", "totalEnds": "20:30", "ends": "21:22" },
+    { "name": "Reykjavík, Iceland", "source": "nasa", "latitude": 64.1466, "longitude": -21.9426, "timeZone": "Atlantic/Reykjavik", "kind": "total", "begins": "16:47", "totalBegins": "17:48", "totalEnds": "17:49", "ends": "18:47" },
+    { "name": "Valencia, Spain", "source": "nasa", "latitude": 39.4699, "longitude": -0.3763, "timeZone": "Europe/Madrid", "kind": "total", "begins": "19:38", "totalBegins": "20:32", "totalEnds": "20:33" },
+    { "name": "Zaragoza, Spain", "source": "nasa", "latitude": 41.6488, "longitude": -0.8891, "timeZone": "Europe/Madrid", "kind": "total", "begins": "19:34", "totalBegins": "20:29", "totalEnds": "20:30" },
+
+    { "name": "Paris, France (AFA)", "source": "afa", "latitude": 48.8566, "longitude": 2.3522, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 92.2, "begins": "19:22", "peak": "20:17" },
+    { "name": "Marseille, France", "source": "afa", "latitude": 43.2965, "longitude": 5.3698, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96.3, "begins": "19:31", "peak": "20:25" },
+    { "name": "Lyon, France", "source": "afa", "latitude": 45.764, "longitude": 4.8357, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 93.8, "begins": "19:27", "peak": "20:21" },
+    { "name": "Toulouse, France", "source": "afa", "latitude": 43.6047, "longitude": 1.4442, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 97.8, "begins": "19:31", "peak": "20:26" },
+    { "name": "Nice, France", "source": "afa", "latitude": 43.7102, "longitude": 7.262, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 95.1, "begins": "19:31", "peak": "20:24" },
+    { "name": "Nantes, France", "source": "afa", "latitude": 47.2184, "longitude": -1.5536, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96, "begins": "19:24", "peak": "20:20" },
+    { "name": "Montpellier, France", "source": "afa", "latitude": 43.6108, "longitude": 3.8767, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96, "begins": "19:31", "peak": "20:25" },
+    { "name": "Strasbourg, France", "source": "afa", "latitude": 48.5734, "longitude": 7.7521, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 89.9, "begins": "19:23", "peak": "20:16" },
+    { "name": "Bordeaux, France", "source": "afa", "latitude": 44.8378, "longitude": -0.5792, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 97.6, "begins": "19:29", "peak": "20:25" },
+    { "name": "Lille, France", "source": "afa", "latitude": 50.6292, "longitude": 3.0573, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 90.4, "begins": "19:19", "peak": "20:14" },
+    { "name": "Brest, France", "source": "afa", "latitude": 48.3904, "longitude": -4.4861, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96.5, "begins": "19:22", "peak": "20:19" },
+    { "name": "Lorient, France", "source": "afa", "latitude": 47.7483, "longitude": -3.3702, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96, "begins": "19:23", "peak": "20:20" },
+    { "name": "La Rochelle, France", "source": "afa", "latitude": 46.1603, "longitude": -1.1511, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 96.8, "begins": "19:26", "peak": "20:22" },
+    { "name": "Biarritz, France", "source": "afa", "latitude": 43.4832, "longitude": -1.5586, "timeZone": "Europe/Paris", "kind": "partial", "coverage": 99.5, "begins": "19:31", "peak": "20:26" }
+  ]
+}

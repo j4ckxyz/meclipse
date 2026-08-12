@@ -1,0 +1,12 @@
+{
+  "name": "Meclipse",
+  "short_name": "Meclipse",
+  "description": "Check whether the solar eclipse is visible where you are.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef1f0",
+  "theme_color": "#172026",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Can you see the eclipse from where you are?</title>
+  <desc id="description">Meclipse social preview with a dark Moon passing over a yellow Sun.</desc>
+  <defs>
+    <radialGradient id="paper" cx="78%" cy="22%" r="88%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.54" stop-color="#eef1f0"/>
+      <stop offset="1" stop-color="#e7ebe9"/>
+    </radialGradient>
+    <radialGradient id="sun" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#ffe79e"/>
+      <stop offset="0.58" stop-color="#f5c95f"/>
+      <stop offset="1" stop-color="#dda73e"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="66%" cy="32%" r="72%">
+      <stop offset="0" stop-color="#344a57"/>
+      <stop offset="0.72" stop-color="#23333d"/>
+      <stop offset="1" stop-color="#17242c"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#1a2b31" flood-opacity="0.2"/>
+    </filter>
+    <clipPath id="disc"><circle cx="965" cy="315" r="210"/></clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <path d="M0 82.5H1200M0 547.5H1200" stroke="#cdd4d1"/>
+
+  <g transform="translate(70 46)">
+    <circle cx="12" cy="12" r="10.5" fill="none" stroke="#829095"/>
+    <circle cx="12" cy="12" r="6.5" fill="#172026"/>
+    <circle cx="12" cy="0" r="3" fill="#f5c95f"/>
+    <text x="34" y="18" fill="#172026" font-family="Arial, sans-serif" font-weight="700" font-size="27" letter-spacing="-1">meclipse</text>
+  </g>
+
+  <text x="70" y="177" fill="#607076" font-family="Arial, sans-serif" font-weight="700" font-size="14" letter-spacing="2.8">SOLAR ECLIPSE CHECKER</text>
+  <text x="64" y="275" fill="#172026" font-family="Georgia, serif" font-size="78" letter-spacing="-4">Can you see it</text>
+  <text x="64" y="354" fill="#557b91" font-family="Georgia, serif" font-style="italic" font-size="78" letter-spacing="-4">from where you are?</text>
+  <text x="70" y="428" fill="#526066" font-family="Arial, sans-serif" font-size="22">A clear local answer, including coverage and timings.</text>
+
+  <g filter="url(#shadow)" clip-path="url(#disc)">
+    <circle cx="965" cy="315" r="210" fill="url(#sun)"/>
+    <circle cx="937" cy="315" r="210" fill="url(#moon)"/>
+    <circle cx="965" cy="315" r="199" fill="none" stroke="#fff7d3" stroke-opacity="0.5"/>
+  </g>
+  <circle cx="965" cy="315" r="210" fill="none" stroke="#172026" stroke-opacity="0.1"/>
+
+  <g transform="translate(1090 506)">
+    <circle cx="0" cy="0" r="56" fill="#fbfcfa"/>
+    <text x="0" y="-1" text-anchor="middle" fill="#172026" font-family="Georgia, serif" font-size="34">here</text>
+    <text x="0" y="20" text-anchor="middle" fill="#687579" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.5">CHECK NOW</text>
+  </g>
+</svg>

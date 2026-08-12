@@ -1,0 +1,46 @@
+{
+  "version": 5,
+  "generatedAt": "2026-08-12T10:20:40.510Z",
+  "events": [
+    {
+      "peak": "2026-08-12T17:45:46.794Z",
+      "kind": "total",
+      "url": "/coverage/2026-08-12.json"
+    },
+    {
+      "peak": "2027-02-06T15:59:32.957Z",
+      "kind": "annular",
+      "url": "/coverage/2027-02-06.json"
+    },
+    {
+      "peak": "2027-08-02T10:06:34.636Z",
+      "kind": "total",
+      "url": "/coverage/2027-08-02.json"
+    },
+    {
+      "peak": "2028-01-26T15:07:42.381Z",
+      "kind": "annular",
+      "url": "/coverage/2028-01-26.json"
+    },
+    {
+      "peak": "2028-07-22T02:55:24.627Z",
+      "kind": "total",
+      "url": "/coverage/2028-07-22.json"
+    },
+    {
+      "peak": "2029-01-14T17:12:28.816Z",
+      "kind": "partial",
+      "url": "/coverage/2029-01-14.json"
+    },
+    {
+      "peak": "2029-06-12T04:04:55.151Z",
+      "kind": "partial",
+      "url": "/coverage/2029-06-12.json"
+    },
+    {
+      "peak": "2029-07-11T15:36:03.870Z",
+      "kind": "partial",
+      "url": "/coverage/2029-07-11.json"
+    }
+  ]
+}
