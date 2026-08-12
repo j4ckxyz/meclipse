@@ -24,7 +24,7 @@ describe('shareable result flow', () => {
 
     expect(screen.getByRole('heading', { name: /partial eclipse/i })).toBeInTheDocument()
     expect(screen.getByText('92%')).toBeInTheDocument()
-    expect(fetcher).not.toHaveBeenCalled()
+    expect(fetcher).not.toHaveBeenCalledWith(expect.stringContaining('/api/places'), expect.anything())
   })
 
   it('offers visible, privacy-safe social links that share the homepage', () => {
@@ -89,7 +89,7 @@ describe('shareable result flow', () => {
 
     expect(window.location.pathname).toContain('/at/45.6004,-0.7481/')
     expect(screen.getByRole('heading', { name: /partial eclipse/i })).toBeInTheDocument()
-    expect(fetcher).not.toHaveBeenCalled()
+    expect(fetcher).not.toHaveBeenCalledWith(expect.stringContaining('/api/places'), expect.anything())
   })
 
   it('opens a Channel Islands postcode result with regional coordinates', async () => {

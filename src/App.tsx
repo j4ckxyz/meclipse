@@ -4,6 +4,7 @@ import ShareMenu from './components/ShareMenu'
 import VisitorCount from './components/VisitorCount'
 import GitHubStarLink from './components/GitHubStarLink'
 import CalendarLink from './components/CalendarLink'
+import VisibilityMap from './components/VisibilityMap'
 import {
   eclipseDescription,
   eclipseName,
@@ -261,6 +262,7 @@ function App() {
           <ResultView
             result={view.result}
             place={view.place}
+            coordinates={view.coordinates}
             now={now}
             reset={reset}
             resultsRef={resultsRef}
@@ -292,12 +294,13 @@ function App() {
 type ResultProps = {
   result: EclipseResult
   place: string
+  coordinates: Coordinates
   now: Date
   reset: () => void
   resultsRef: React.RefObject<HTMLDivElement | null>
 }
 
-function ResultView({ result, place, now, reset, resultsRef }: ResultProps) {
+function ResultView({ result, place, coordinates, now, reset, resultsRef }: ResultProps) {
   const coverage = Math.round(result.coverage * 100)
   const phase = eclipseStatus(result, now)
   const shadowOffset = `${Math.max(0, (1 - result.coverage) * 82)}%`
@@ -345,6 +348,7 @@ function ResultView({ result, place, now, reset, resultsRef }: ResultProps) {
           </aside>
         </div>
       </div>
+      <VisibilityMap coordinates={coordinates} peak={result.peak} />
     </section>
   )
 }
