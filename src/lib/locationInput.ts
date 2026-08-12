@@ -1,4 +1,4 @@
-import type { Place } from '../types/place.ts'
+import type { Place } from '../types/place.js'
 
 type Coordinates = { latitude: number; longitude: number }
 

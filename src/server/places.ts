@@ -1,5 +1,5 @@
-import type { Place } from '../types/place.ts'
-import { isSupportedMapUrl, locationTextFromMapUrl, parseLocationInput } from '../lib/locationInput.ts'
+import type { Place } from '../types/place.js'
+import { isSupportedMapUrl, locationTextFromMapUrl, parseLocationInput } from '../lib/locationInput.js'
 
 type Fetcher = typeof fetch
 
