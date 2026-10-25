@@ -1,12 +1,7 @@
 {
   "version": 5,
-  "generatedAt": "2026-08-12T10:53:43.764Z",
+  "generatedAt": "2026-10-25T11:15:08.708Z",
   "events": [
-    {
-      "peak": "2026-08-12T17:45:46.794Z",
-      "kind": "total",
-      "url": "/coverage/2026-08-12.json"
-    },
     {
       "peak": "2027-02-06T15:59:32.957Z",
       "kind": "annular",
@@ -41,6 +36,11 @@
       "peak": "2029-07-11T15:36:03.870Z",
       "kind": "partial",
       "url": "/coverage/2029-07-11.json"
+    },
+    {
+      "peak": "2029-12-05T15:02:39.906Z",
+      "kind": "partial",
+      "url": "/coverage/2029-12-05.json"
     }
   ]
 }
